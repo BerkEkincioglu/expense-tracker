@@ -33,42 +33,64 @@ class TransactionList extends StatelessWidget {
           : ListView.builder(
               itemBuilder: (ctx, index) {
                 return Card(
-                  margin: EdgeInsets.all(5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Container(
+                  margin: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+                  elevation: 5,
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      radius: 30,
+                      backgroundColor: Colors.redAccent,
+                      child: Padding(
                         padding: EdgeInsets.all(5),
-                        margin: EdgeInsets.all(15),
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.black, width: .2)),
-                        child: Text(
-                          '\$${transactions[index].amount.toStringAsFixed(2)}',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                              color: Colors.black),
+                        child: FittedBox(
+                          child: Text(
+                            '\$${transactions[index].amount}',
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ),
                       ),
-                      Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              transactions[index].title,
-                              style: TextStyle(
-                                  fontSize: 15, fontWeight: FontWeight.w600),
-                              // style: TextStyle(color: Theme.of(context).primaryColor),
-                            ),
-                            Text(
-                                DateFormat()
-                                    .add_yMEd()
-                                    .add_jm()
-                                    .format(transactions[index].date), //Date
-                                style: TextStyle(color: Colors.grey))
-                          ])
-                    ],
+                    ),
+                    title: Text(transactions[index].title),
+                    subtitle: Text(
+                        DateFormat.yMMMd().format(transactions[index].date)),
                   ),
                 );
+                // return Card(
+                //   margin: EdgeInsets.all(5),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.start,
+                //     children: [
+                //       Container(
+                //         padding: EdgeInsets.all(5),
+                //         margin: EdgeInsets.all(15),
+                //         decoration: BoxDecoration(
+                //             border: Border.all(color: Colors.black, width: .2)),
+                //         child: Text(
+                //           '\$${transactions[index].amount.toStringAsFixed(2)}',
+                //           style: TextStyle(
+                //               fontWeight: FontWeight.bold,
+                //               fontSize: 15,
+                //               color: Colors.black),
+                //         ),
+                //       ),
+                //       Column(
+                //           crossAxisAlignment: CrossAxisAlignment.start,
+                //           children: [
+                //             Text(
+                //               transactions[index].title,
+                //               style: TextStyle(
+                //                   fontSize: 15, fontWeight: FontWeight.w600),
+                //               // style: TextStyle(color: Theme.of(context).primaryColor),
+                //             ),
+                //             Text(
+                //                 DateFormat()
+                //                     .add_yMEd()
+                //                     .add_jm()
+                //                     .format(transactions[index].date), //Date
+                //                 style: TextStyle(color: Colors.grey))
+                //           ])
+                //     ],
+                //   ),
+                // );
               },
               itemCount: transactions.length,
             ),

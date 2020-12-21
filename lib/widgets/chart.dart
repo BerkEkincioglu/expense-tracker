@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import './chart_bar.dart';
 import '../models/transaction.dart';
 
+// ignore: must_be_immutable
 class Chart extends StatelessWidget {
   final List<Transaction> recentTransactions;
 
@@ -14,7 +15,7 @@ class Chart extends StatelessWidget {
   List<Map<String, Object>> get groupedTransactionValues {
     return List.generate(7, (index) {
       final weekDay = DateTime.now().subtract(Duration(days: index));
-      print(weekDay);
+
       var totalSum = 0.0;
 
       for (var i = 0; i < recentTransactions.length; i++) {
@@ -29,7 +30,7 @@ class Chart extends StatelessWidget {
         'day': DateFormat.E().format(weekDay).substring(0, 1),
         'amount': totalSum
       };
-    });
+    }).toList();
   }
 
   double get totalSpending {

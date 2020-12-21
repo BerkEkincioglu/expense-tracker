@@ -12,20 +12,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Expense Tracker',
-        home: MyHomePage(),
-        theme: ThemeData(
-            primarySwatch: Colors.purple,
-            accentColor: Colors.amber,
-            fontFamily: 'Quicksand',
-            textTheme: ThemeData.light().textTheme.copyWith(
-                  // ignore: deprecated_member_use
-                  headline6: TextStyle(
-                    fontFamily: 'Quicksand',
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                  ),
-                )));
+      title: 'Expense Tracker',
+      home: MyHomePage(),
+      theme: ThemeData(
+        primarySwatch: Colors.red,
+        accentColor: Colors.black,
+        fontFamily: 'Quicksand',
+        textTheme: ThemeData.light().textTheme.copyWith(
+              // ignore: deprecated_member_use
+              headline6: TextStyle(
+                fontFamily: 'Quicksand',
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+      ),
+    );
   }
 }
 
@@ -96,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.black87,
         title: Text(
           'Expense Tracker App',
-          style: TextStyle(color: Colors.red),
+          style: TextStyle(color: Colors.white),
         ),
         actions: [
           IconButton(
@@ -115,8 +117,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          backgroundColor: Colors.redAccent,
+          child: Icon(Icons.add, color: Colors.redAccent),
+          backgroundColor: Colors.white70,
           onPressed: () => _startAddNewTransaction(context)),
     );
   }
