@@ -10,8 +10,6 @@ class Chart extends StatelessWidget {
 
   Chart(this.recentTransactions);
 
-  double totalSpendingPercantage;
-
   List<Map<String, Object>> get groupedTransactionValues {
     return List.generate(7, (index) {
       final weekDay = DateTime.now().subtract(Duration(days: index));

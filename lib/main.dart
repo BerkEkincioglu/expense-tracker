@@ -70,19 +70,25 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
-  void _addNewTransaction(String title, double amount) {
-    final newTx = Transaction(
-        id: Uuid().v4(), title: title, amount: amount, date: DateTime.now());
+  void _addNewTransaction(String title, double amount, DateTime date) {
+    final newTx =
+        Transaction(id: Uuid().v4(), title: title, amount: amount, date: date);
 
     setState(() {
       _userTransactions.add(newTx);
     });
   }
 
+  void _deleteTransaction(String id) {
+    setState(() {
+      _userTransactions.removeWhere((element) => element.id == id);
+    });
+  }
+
   void _startAddNewTransaction(BuildContext ctx) {
     showModalBottomSheet(
         context: ctx,
-        builder: (bCtx) {
+        builder: (_) {
           return GestureDetector(
               onTap: () {},
               behavior: HitTestBehavior.opaque,
@@ -111,7 +117,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: [
             Chart(_recentTransactions),
-            TransactionList(_userTransactions),
+            TransactionList(_userTransactions, _deleteTransaction),
           ],
         ),
       ),
